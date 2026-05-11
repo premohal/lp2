@@ -1,0 +1,212 @@
+from collections import deque
+
+graph = {
+    '1': ['2', '3'],
+    '2': ['4', '5'],
+    '3': ['6', '7'],
+    '4': [],
+    '5': [],
+    '6': [],
+    '7': []
+}
+
+visited_dfs = set()
+
+def dfs(node):
+    if node not in visited_dfs:
+        print(node, end=" ")
+        visited_dfs.add(node)
+        for neighbour in graph[node]:
+            dfs(neighbour)
+
+def bfs(queue, visited):
+    if not queue:
+        return
+    node = queue.popleft()
+    print(node, end=" ")
+    for neighbour in graph[node]:
+        if neighbour not in visited:
+            visited.add(neighbour)
+            queue.append(neighbour)
+    bfs(queue, visited)
+
+start = '1'
+
+print("Depth First Search using Recursion:")
+dfs(start)
+
+visited = set()
+visited.add(start)
+
+queue = deque()
+queue.append(start)
+
+print("\nBreadth First Search using Recursion:")
+bfs(queue, visited)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+#2nd assignment
+from queue import PriorityQueue
+goal = [[1,2,3],[4,5,6],[7,8,0]]
+def heuristic(state):
+    count = 0
+    for i in range(3):
+        for j in range(3):
+            if state[i][j] != 0 and state[i][j] != goal[i][j]:
+                count += 1
+    return count
+def find_blank(state):
+    for i in range(3):
+        for j in range(3):
+            if state[i][j] == 0:
+                return i,j
+def next_states(state):
+    states=[]
+    x,y = find_blank(state)
+    moves = [(-1,0),(1,0),(0,-1),(0,1)]
+    for dx,dy in moves:
+        nx = x + dx
+        ny = y + dy
+        if 0 <= nx < 3 and 0 <= ny < 3:
+            new_state = [row[:] for row in state]
+            new_state[x][y],new_state[nx][ny] = new_state[nx][ny],new_state[x][y]
+            states.append(new_state)
+    return states
+def astar(start):
+    pq = PriorityQueue()
+    pq.put((heuristic(start),start,0))
+    visited = []
+    while not pq.empty():
+        f,current,moves = pq.get()
+        print("Current state:")
+        for row in current:
+            print(row)
+        print()
+        if current == goal:
+            print("Goal Reached!")
+            print("Total Moves=",moves)
+            return
+        visited.append(current)
+        for state in next_states(current):
+            if state not in visited:
+                g = moves + 1
+                h = heuristic(state)
+                f = g + h
+                pq.put((f,state,g))
+start = [[1,2,3],[4,0,6],[7,5,8]]
+astar(start)
+--------------------------------------------------------------------------------------------------------------------------------------
+#3rd assignment
+def selection_sort(arr):
+    for i in range(len(arr)):
+        min_index = i
+
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[min_index]:
+                min_index = j
+
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+
+    print("Sorted Array:", arr)
+
+arr = list(map(int, input("Enter array elements separated by space: ").split()))
+
+selection_sort(arr)
+--------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
+#4th assignment-csp-queens
+N = int(input("Enter number of Queens: "))
+board = [[0 for i in range(N)] for j in range(N)]
+left_row = [False] * N
+upper_diagonal = [False] * (2 * N - 1)
+lower_diagonal = [False] * (2 * N - 1)
+def print_board():
+    for row in board:
+        for cell in row:
+            if cell == 1:
+                print("Q",end = " ")
+            else:
+                print(".",end = " ")
+        print()
+def solve(col):
+    if col == N:
+        return True
+    for row in range(N):
+        if(left_row[row] == False and lower_diagonal[row + col] == False and upper_diagonal[N - 1 + col - row] == False):
+            board[row][col] = 1
+            left_row[row] = True
+            lower_diagonal[row + col] = True
+            upper_diagonal[N - 1 + col - row] = True
+            if solve(col + 1):
+                return True
+            board[row][col]=0
+            lower_diagonal[row + col]=False
+            left_row[row] = False
+            upper_diagonal[N - 1 + col - row]=False
+    return False
+
+if solve(0):
+    print("\nSolution Found")
+    print_board()
+else:
+    print("No solution found")
+--------------------------------------------------------------------------------------------------------------------------------------
+#5th assignment - csp- graph colourinh
+graph = [[0,1,1,1],[1,0,1,0],[1,1,0,1],[1,0,1,0]]
+m = 3
+colors = [0] * len(graph)
+def solve(node):
+    if node == len(graph):
+        return True
+    for color in range(1,m + 1):
+        safe = True
+        for neighbour in range(len(graph)):
+            if graph[node][neighbour] == 1 and colors[neighbour] == color:
+                safe = False
+                break
+        if safe:
+            colors[node] = color
+            if solve(node +  1):
+                return True
+            colors[node] = 0
+    return False
+if solve(0):
+    print("\nSolution Found:\n")
+    for i in range(len(colors)):Bu
+        print("Vertex",i,"->",colors[i])
+else:
+    print("\nNo solution exists")
+--------------------------------------------------------------------------------------------------------------------------------------
+# 6th assignment- College Admission Chatbot
+
+print("Admission Bot: Welcome to ABC College!")
+print("Type 'bye' to exit.\n")
+
+while True:
+    user = input("You: ").lower()
+
+    if user == "courses":
+        print("Bot: We offer BCA, BBA, BSc and MBA.")
+
+    elif user == "fees":
+        print("Bot: Fees depend on the course selected.")
+
+    elif user == "admission":
+        print("Bot: Admission is based on merit and entrance exam.")
+
+    elif user == "documents":
+        print("Bot: Required documents are marksheets, ID proof and photos.")
+
+    elif user == "contact":
+        print("Bot: Call us at 9876543210.")
+
+    elif user == "bye":
+        print("Bot: Thank you for visiting!")
+        break
+
+    else:
+        print("Bot: Sorry, please ask about courses, fees, admission or documents.")
+---------------------------------------------------------------------------------------------------------------------------------------
+            
