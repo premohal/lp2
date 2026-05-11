@@ -1,0 +1,276 @@
+# 🎯 How to Explain This Code to External
+
+When external asks, don’t explain every line immediately.
+Explain in this flow 👇
+
+---
+
+# 🔴 Introduction
+
+> “This program solves the N-Queens Problem using CSP (Constraint Satisfaction Problem) and Backtracking.”
+
+---
+
+# 🔴 Explain N-Queens Problem
+
+Say:
+
+> “The goal is to place N queens on chessboard such that no two queens attack each other.”
+
+Then explain:
+
+Queens can attack:
+
+* Row
+* Column
+* Diagonal
+
+---
+
+# 🔴 Show Example
+
+For N = 4
+
+```text id="m7x9d2"
+. Q . .
+. . . Q
+Q . . .
+. . Q .
+```
+
+Then say:
+
+> “Here no queens are attacking each other.”
+
+---
+
+# 🔴 Explain Chessboard
+
+Say:
+
+> “The board is stored using 2D list.”
+
+Example:
+
+```python id="t9f0x1"
+board = [[0 for i in range(N)] for j in range(N)]
+```
+
+Then say:
+
+> “0 means empty cell and 1 means queen placed.”
+
+---
+
+# 🔴 Explain Backtracking
+
+Say confidently:
+
+> “Backtracking means trying one solution, and if it fails, going back and trying another solution.”
+
+Flow:
+
+```text id="f5n1pq"
+Place Queen
+   ↓
+Check Safe Position
+   ↓
+Move Next Column
+   ↓
+If Failed → Backtrack
+```
+
+---
+
+# 🔴 Explain Important Arrays
+
+---
+
+## left_row
+
+> “Checks whether queen already exists in same row.”
+
+---
+
+## lower_diagonal
+
+> “Checks lower diagonal safety.”
+
+Formula:
+
+row+col
+
+---
+
+## upper_diagonal
+
+> “Checks upper diagonal safety.”
+
+Formula:
+
+N-1+col-row
+
+---
+
+# 🔴 Explain Important Functions
+
+---
+
+## print_board()
+
+> “This function prints final chessboard.”
+
+Then explain:
+
+* Q → Queen
+* . → Empty space
+
+---
+
+## solve(col)
+
+> “This is recursive backtracking function.”
+
+Explain flow:
+
+```text id="x7b2rm"
+1. Start from first column
+2. Try placing queen in every row
+3. Check row and diagonal safety
+4. Place queen if safe
+5. Recursively solve next column
+6. If failed, remove queen
+7. Try another position
+```
+
+---
+
+# 🔴 Explain Base Condition
+
+Say:
+
+```python id="n2v4kt"
+if col == N:
+    return True
+```
+
+Then explain:
+
+> “If all queens are placed successfully, solution is found.”
+
+---
+
+# 🔴 Explain Backtracking Step
+
+Show this:
+
+```python id="q8s1de"
+board[row][col]=0
+```
+
+Then say:
+
+> “If solution fails, queen is removed and another position is tried.”
+
+---
+
+# 🔴 Explain Output
+
+For N = 4
+
+```text id="a3m8yu"
+Solution Found
+
+. Q . .
+. . . Q
+Q . . .
+. . Q .
+```
+
+---
+
+# 🎯 VERY IMPORTANT VIVA QUESTIONS
+
+---
+
+## ❓ What is N-Queens Problem?
+
+> “Placing N queens such that no queens attack each other.”
+
+---
+
+## ❓ What is CSP?
+
+> “Constraint Satisfaction Problem.”
+
+---
+
+## ❓ What constraints are checked?
+
+> “Row and diagonals.”
+
+---
+
+## ❓ Why column check is not needed?
+
+> “Because only one queen is placed per column.”
+
+---
+
+## ❓ What is Backtracking?
+
+> “Trying solution recursively and undoing if it fails.”
+
+---
+
+## ❓ Why recursion is used?
+
+> “To place queens column by column.”
+
+---
+
+## ❓ What does left_row store?
+
+> “It stores whether row already has queen.”
+
+---
+
+## ❓ What is lower diagonal formula?
+
+row+col
+
+---
+
+## ❓ What is upper diagonal formula?
+
+N-1+col-row
+
+---
+
+## ❓ Time Complexity?
+
+> “Approximately O(N!).”
+
+---
+
+## ❓ Space Complexity?
+
+> “O(N²) for chessboard.”
+
+---
+
+# 🎯 MOST IMPORTANT THING
+
+External mostly checks:
+
+* confidence
+* recursion understanding
+* backtracking logic
+
+You don’t need difficult explanation.
+
+Even simple explanation like:
+
+> “We place queens safely column by column using backtracking”
+
+is enough 👍
