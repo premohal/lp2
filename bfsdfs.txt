@@ -1,0 +1,166 @@
+# 🎯 How to Explain This Code to External
+
+When external asks, don’t explain every line immediately.
+Explain in this flow 👇
+
+---
+
+# 🔴 Introduction
+
+> “This program implements Depth First Search and Breadth First Search using recursion on a graph data structure.”
+
+---
+
+# 🔴 Explain Graph
+
+Show this:
+
+```id="t8yzjw"
+      1
+    /   \
+   2     3
+  / \   / \
+ 4  5  6  7
+```
+
+Then say:
+
+> “The graph is stored using dictionary where every node stores its neighbouring nodes.”
+
+Example:
+
+```python id="m2cqes"
+'1': ['2','3']
+```
+
+> “Node 1 is connected to 2 and 3.”
+
+---
+
+# 🔴 Explain DFS
+
+Say this confidently:
+
+> “DFS means Depth First Search. It visits nodes deeply first using recursion.”
+
+Then explain flow:
+
+```id="0lc2u7"
+1 → 2 → 4 → back → 5 → back → 3 → 6 → 7
+```
+
+Then say:
+
+> “We use visited set so the same node is not visited again.”
+
+---
+
+# 🔴 Explain BFS
+
+Say:
+
+> “BFS means Breadth First Search. It visits nodes level by level using queue.”
+
+Flow:
+
+```id="n9n0dq"
+1 → 2 3 → 4 5 6 7
+```
+
+Then say:
+
+> “Queue follows FIFO — First In First Out.”
+
+---
+
+# 🔴 Explain Important Functions
+
+### DFS Function
+
+> “In DFS, first we check visited node, print it, mark visited, and recursively call neighbours.”
+
+---
+
+### BFS Function
+
+> “In BFS, we remove first element from queue, print it, then add all unvisited neighbours into queue.”
+
+---
+
+# 🎯 VERY IMPORTANT VIVA QUESTIONS
+
+---
+
+## ❓ What is graph traversal?
+
+> “Graph traversal means visiting all nodes of graph.”
+
+---
+
+## ❓ Why visited set is used?
+
+> “To avoid revisiting same node and prevent infinite loop.”
+
+---
+
+## ❓ Difference between DFS and BFS?
+
+| DFS                  | BFS             |
+| -------------------- | --------------- |
+| Uses recursion/stack | Uses queue      |
+| Goes deep first      | Goes level-wise |
+
+---
+
+## ❓ Which data structure is used in BFS?
+
+> “Queue.”
+
+---
+
+## ❓ Which data structure is used in DFS?
+
+> “Recursion stack.”
+
+---
+
+## ❓ What is recursion?
+
+> “A function calling itself is called recursion.”
+
+---
+
+## ❓ What is deque?
+
+> “Deque is double ended queue used for efficient queue operations.”
+
+---
+
+## ❓ Time Complexity of DFS and BFS?
+
+> “O(V + E)”
+> (V = vertices, E = edges)
+
+---
+
+## ❓ Why BFS gives shortest path?
+
+> “Because BFS explores level by level.”
+
+---
+
+# 🎯 MOST IMPORTANT THING
+
+External mostly checks:
+
+* confidence
+* basic understanding
+* flow explanation
+
+You don’t need textbook language.
+
+Even simple explanation like:
+
+> “DFS goes deep recursively and BFS uses queue level by level”
+
+is enough 👍
