@@ -1,0 +1,279 @@
+# 🎯 How to Explain This Code to External
+
+When external asks, don’t explain every line immediately.
+Explain in this flow 👇
+
+---
+
+# 🔴 Introduction
+
+> “This program implements the A* Search Algorithm to solve the 8 Puzzle Problem using heuristic function and priority queue.”
+
+---
+
+# 🔴 Explain 8 Puzzle
+
+Show this:
+
+```text
+Start State
+
+1 2 3
+4 0 6
+7 5 8
+```
+
+```text
+Goal State
+
+1 2 3
+4 5 6
+7 8 0
+```
+
+Then say:
+
+> “0 represents the blank space.
+> The objective is to move tiles and reach the goal state.”
+
+---
+
+# 🔴 Explain A* Algorithm
+
+Say confidently:
+
+> “A* is an informed search algorithm.
+> It finds the shortest path using:
+>
+> f(n) = g(n) + h(n)”
+
+Inline formula:
+
+f(n)=g(n)+h(n)
+
+Then explain:
+
+| Term | Meaning                     |
+| ---- | --------------------------- |
+| g(n) | Cost to reach current state |
+| h(n) | Heuristic value             |
+| f(n) | Total estimated cost        |
+
+---
+
+# 🔴 Explain Heuristic Function
+
+Say:
+
+> “Heuristic function counts how many tiles are in wrong position compared to goal state.”
+
+Example:
+
+```text
+1 2 3
+4 0 6
+7 5 8
+```
+
+Wrong tiles:
+
+* 5
+* 8
+
+So heuristic value = 2
+
+Then say:
+
+> “Lower heuristic value means state is closer to goal.”
+
+---
+
+# 🔴 Explain Priority Queue
+
+Say:
+
+> “Priority Queue always selects the state having minimum f(n) value first.”
+
+Then say:
+
+> “This helps A* reach goal faster.”
+
+---
+
+# 🔴 Explain Important Functions
+
+---
+
+## heuristic(state)
+
+> “This function calculates number of misplaced tiles.”
+
+---
+
+## find_blank(state)
+
+> “This function finds position of blank space (0).”
+
+---
+
+## next_states(state)
+
+> “This function generates all possible next moves by moving blank space up, down, left, or right.”
+
+Example flow:
+
+```text
+Up
+Down
+Left
+Right
+```
+
+---
+
+## astar(start)
+
+> “This is the main function of A* algorithm.”
+
+Then explain flow:
+
+```text
+1. Put start state in priority queue
+2. Remove best state
+3. Check goal state
+4. Generate next states
+5. Calculate f(n)
+6. Add states again into queue
+7. Repeat until goal found
+```
+
+---
+
+# 🔴 Explain Output Flow
+
+Say:
+
+> “The program prints current states step by step until goal state is reached.”
+
+Flow:
+
+```text
+Start State
+   ↓
+Generate Next States
+   ↓
+Choose Best State
+   ↓
+Repeat
+   ↓
+Goal Reached
+```
+
+---
+
+# 🎯 VERY IMPORTANT VIVA QUESTIONS
+
+---
+
+## ❓ What is A* Algorithm?
+
+> “A* is a searching algorithm that finds shortest path using heuristic function.”
+
+---
+
+## ❓ What is heuristic function?
+
+> “Heuristic function estimates how close current state is to goal state.”
+
+---
+
+## ❓ What heuristic is used here?
+
+> “Misplaced tiles heuristic.”
+
+---
+
+## ❓ Why Priority Queue is used?
+
+> “To select state with minimum cost value first.”
+
+---
+
+## ❓ What does 0 represent?
+
+> “Blank space.”
+
+---
+
+## ❓ What is f(n)?
+
+f(n)=g(n)+h(n)
+
+> “Total estimated cost.”
+
+---
+
+## ❓ What is g(n)?
+
+> “Actual moves from start state.”
+
+---
+
+## ❓ What is h(n)?
+
+> “Estimated distance from goal.”
+
+---
+
+## ❓ Why visited list is used?
+
+> “To avoid revisiting same states.”
+
+---
+
+## ❓ What are possible moves in 8 puzzle?
+
+> “Up, Down, Left, Right.”
+
+---
+
+## ❓ What is the goal of 8 puzzle problem?
+
+> “To arrange tiles into goal configuration.”
+
+---
+
+## ❓ Time Complexity of A*?
+
+> “Worst case is exponential.”
+>
+> “Approximately O(b^d)”
+>
+> where:
+>
+> * b = branching factor
+> * d = depth of solution
+
+---
+
+## ❓ Space Complexity?
+
+> “O(b^d) because all generated states are stored.”
+
+---
+
+# 🎯 MOST IMPORTANT THING
+
+External mostly checks:
+
+* confidence
+* basic understanding
+* algorithm flow
+
+You don’t need difficult theory.
+
+Even simple explanation like:
+
+> “A* uses heuristic and priority queue to find best path toward goal”
+
+is enough 👍
